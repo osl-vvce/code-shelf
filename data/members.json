@@ -1,0 +1,95 @@
+[
+  {
+    "name": "Sarah Chen",
+    "username": "sarahcode",
+    "bio": "Full-stack developer who loves React and efficient algorithms. Building tools for developers.",
+    "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    "skills": ["React", "Node.js", "TypeScript", "AWS"],
+    "projects": [
+      {
+        "title": "EcoTrack",
+        "description": "A dashboard for tracking carbon footprint using daily activity inputs.",
+        "techStack": ["React", "D3.js", "Express"],
+        "link": "https://github.com/sarahcode/ecotrack"
+      },
+      {
+        "title": "DevShelf",
+        "description": "A CLI tool to manage local development environments quickly.",
+        "techStack": ["Go", "Cobra", "Docker"],
+        "link": "https://github.com/sarahcode/devshelf"
+      }
+    ]
+  },
+  {
+    "name": "Alex Rodriguez",
+    "username": "arodriguez",
+    "bio": "UI/UX enthusiast and frontend wizard. Obsessed with pixel perfection.",
+    "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+    "skills": ["Vue.js", "Tailwind", "Figma", "Three.js"],
+    "projects": [
+      {
+        "title": "NeonVibes",
+        "description": "A 3D portfolio website featuring interactive webGL elements.",
+        "techStack": ["Three.js", "React", "GSAP"],
+        "link": "https://github.com/arodriguez/neonvibes"
+      },
+      {
+        "title": "ComponentLib",
+        "description": "An accessible component library for internal tools.",
+        "techStack": ["Storybook", "React", "A11y"],
+        "link": "https://github.com/arodriguez/componentlib"
+      }
+    ]
+  },
+  {
+    "name": "Jordan Smith",
+    "username": "jordan_dev",
+    "bio": "Backend engineer focused on distributed systems and cloud architecture.",
+    "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan",
+    "skills": ["Java", "Spring Boot", "Kafka", "Kubernetes"],
+    "projects": [
+      {
+        "title": "StreamPipe",
+        "description": "High-throughput message queue system for IoT devices.",
+        "techStack": ["Java", "Kafka", "Redis"],
+        "link": "https://github.com/jordan_dev/streampipe"
+      }
+    ]
+  },
+  {
+    "name": "Emily Watson",
+    "username": "emilyw",
+    "bio": "Data scientist turned developer. Python lover.",
+    "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
+    "skills": ["Python", "Django", "Pandas", "PostgreSQL"],
+    "projects": [
+      {
+        "title": "DataVizHub",
+        "description": "Platform for sharing and visualizing complex datasets.",
+        "techStack": ["Django", "React", "Plotly"],
+        "link": "https://github.com/emilyw/datavizhub"
+      },
+      {
+        "title": "ScrapeMaster",
+        "description": "Automated web scraping framework for market research.",
+        "techStack": ["Python", "Selenium", "BS4"],
+        "link": "https://github.com/emilyw/scrapemaster"
+      }
+    ]
+  },
+  {
+    "name": "David Kim",
+    "username": "dkim_security",
+    "bio": "Cybersecurity student. CTF player. Securing the web one commit at a time.",
+    "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+    "skills": ["C++", "Python", "Bash", "Assembly"],
+    "projects": [
+      {
+        "title": "VulnScanner",
+        "description": "Simple network vulnerability scanner written in Python.",
+        "techStack": ["Python", "Nmap"],
+        "link": "https://github.com/dkim_security/vulnscanner"
+      }
+    ]
+  }
+]
