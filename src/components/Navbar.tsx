@@ -1,4 +1,4 @@
-
+﻿
 import Link from 'next/link';
 import { Search, Plus, Menu, Library, ChevronDown } from 'lucide-react';
 
@@ -63,7 +63,7 @@ export default function Navbar() {
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
-            href="/projects"
+            href="/projects/new"
             className="inline-flex items-center gap-2 rounded-lg border border-[#3d444d] bg-[#21262d] px-3 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm transition-colors hover:border-[#8b949e] hover:bg-[#30363d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff]"
           >
             <Plus size={16} />
@@ -82,3 +82,4 @@ export default function Navbar() {
     </header>
   );
 }
+

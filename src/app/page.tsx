@@ -1,4 +1,4 @@
-
+﻿
 import { promises as fs } from 'fs';
 import path from 'path';
 import MemberCard from '@/components/MemberCard';
@@ -10,7 +10,13 @@ interface Member {
     bio: string;
     avatar_url: string;
     skills: string[];
-    projects: any[];
+    projects: {
+        title: string;
+        description: string;
+        techStack: string[];
+        link: string;
+        liveDemo?: string;
+    }[];
 }
 
 async function getMembers(): Promise<Member[]> {
@@ -73,3 +79,4 @@ export default async function Home() {
         </main>
     );
 }
+
