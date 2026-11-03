@@ -1,19 +1,26 @@
 
+"use client";
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { Search, Plus, Menu, Library, ChevronDown } from 'lucide-react';
+import { Search, Plus, Menu, X, Library, Compass } from 'lucide-react';
 
 export default function Navbar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
         <header className="sticky top-0 z-50 border-b border-[#30363d] bg-[#0d1117] text-[#f0f6fc]">
             <nav className="mx-auto flex min-h-[68px] max-w-screen-2xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-                {/* Logo and mobile menu */}
+                {/* Logo and mobile menu toggle */}
                 <div className="flex shrink-0 items-center gap-3">
                     <button
                         type="button"
-                        aria-label="Open navigation menu"
+                        onClick={() => setIsMenuOpen((prev) => !prev)}
+                        aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={isMenuOpen}
                         className="rounded-md p-2 text-[#8b949e] transition-colors hover:bg-[#21262d] hover:text-white md:hidden"
                     >
-                        <Menu size={21} />
+                        {isMenuOpen ? <X size={21} /> : <Menu size={21} />}
                     </button>
 
                     <Link
@@ -35,7 +42,7 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                {/* Search */}
+                {/* Desktop Search */}
                 <div className="hidden min-w-0 max-w-md flex-1 md:block">
                     <label className="relative block">
                         <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-[#8b949e]">
@@ -57,10 +64,10 @@ export default function Navbar() {
                     </label>
                 </div>
 
-                {/* Actions */}
+                {/* Desktop Actions */}
                 <div className="flex shrink-0 items-center gap-2 sm:gap-3">
                     <Link
-                        href="/projects"
+                        href="/projects/new"
                         className="inline-flex items-center gap-2 rounded-lg border border-[#3d444d] bg-[#21262d] px-3 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm transition-colors hover:border-[#8b949e] hover:bg-[#30363d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#58a6ff]"
                     >
                         <Plus size={16} />
@@ -68,14 +75,55 @@ export default function Navbar() {
                     </Link>
 
                     <Link
-                        href="/members"
+                        href="/"
                         className="inline-flex items-center gap-2 rounded-lg border border-[#3d444d] bg-[#21262d] px-3 py-2 text-sm font-medium text-[#f0f6fc] shadow-sm transition-colors hover:border-[#8b949e] hover:bg-[#30363d]"
                     >
+                        <Compass size={16} />
                         <span>Explore</span>
-                        <ChevronDown size={15} />
                     </Link>
                 </div>
             </nav>
+
+            {/* Mobile Dropdown Menu */}
+            {isMenuOpen && (
+                <div className="border-t border-[#30363d] bg-[#161b22] px-4 py-4 md:hidden">
+                    <div className="space-y-3">
+                        <label className="relative block">
+                            <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-[#8b949e]">
+                                <Search size={16} />
+                            </span>
+
+                            <input
+                                type="search"
+                                aria-label="Search Code-Shelf"
+                                placeholder="Search Code-Shelf..."
+                                className="w-full rounded-lg border border-[#30363d] bg-[#010409] py-2 pl-10 pr-4 text-sm text-[#f0f6fc] placeholder:text-[#8b949e] transition-all focus:border-[#58a6ff] focus:outline-none focus:ring-2 focus:ring-[#1f6feb]/40"
+                            />
+                        </label>
+
+                        <div className="flex flex-col gap-2 pt-2">
+                            <Link
+                                href="/"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-[#f0f6fc] transition-colors hover:bg-[#21262d]"
+                            >
+                                <Compass size={18} className="text-[#8b949e]" />
+                                <span>Explore People</span>
+                            </Link>
+
+                            <Link
+                                href="/projects/new"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="flex items-center gap-2.5 rounded-lg bg-[#21262d] px-3 py-2 text-sm font-medium text-[#f0f6fc] transition-colors hover:bg-[#30363d]"
+                            >
+                                <Plus size={18} className="text-[#58a6ff]" />
+                                <span>New Project</span>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
         </header>
     );
 }
+
