@@ -3,7 +3,7 @@ import path from 'path';
 
 import { notFound } from 'next/navigation';
 import ProjectCard from '@/components/ProjectCard';
-import { Users, MapPin, BookOpen } from 'lucide-react';
+import { Users, MapPin, BookOpen, GraduationCap, ExternalLink, Globe } from 'lucide-react';
 import ProfileAvatar from '@/components/ProfileAvatar';
 
 
@@ -22,6 +22,12 @@ interface Member {
     avatar_url: string;
     skills: string[];
     projects: Project[];
+    location?: string;
+    batch?: string;
+    github_url?: string;
+    followers?: number;
+    following?: number;
+    website?: string;
 }
 
 
@@ -44,6 +50,9 @@ export default async function ProfilePage({ params }: Props) {
     notFound();
   }
 
+  const hasFollowers = typeof member.followers === 'number';
+  const hasFollowing = typeof member.following === 'number';
+
   return (
     <main className="max-w-screen-xl mx-auto px-4 md:px-6 py-8">
       <div className="flex flex-col md:flex-row gap-8">
@@ -60,25 +69,72 @@ export default async function ProfilePage({ params }: Props) {
                 
                 <div className="mt-4 pb-4 border-b border-[#d0d7de] md:border-0">
                     <h1 className="text-2xl font-bold text-[#1f2328]">{member.name}</h1>
-                    <h2 className="text-xl text-[#656d76] font-light">{member.username}</h2>
+                    <h2 className="text-xl text-[#656d76] font-light">@{member.username}</h2>
                     <p className="mt-4 text-[#1f2328] text-base leading-snug">{member.bio}</p>
                     
                     <button className="w-full mt-4 bg-[#f6f8fa] hover:bg-[#f3f4f6] text-[#24292f] border border-[rgba(31,35,40,0.15)] font-medium py-1.5 px-3 rounded-md text-sm transition-colors shadow-sm">
                         Follow
                     </button>
                     
-                    <div className="flex items-center gap-2 mt-4 text-sm text-[#656d76]">
-                         <Users size={16} />
-                         <span className="font-bold text-[#1f2328]">12</span> followers
-                         <span>·</span>
-                         <span className="font-bold text-[#1f2328]">5</span> following
-                    </div>
+                    {(hasFollowers || hasFollowing) && (
+                      <div className="flex items-center gap-2 mt-4 text-sm text-[#656d76]">
+                           <Users size={16} />
+                           {hasFollowers && (
+                             <span>
+                               <strong className="text-[#1f2328]">{member.followers}</strong> followers
+                             </span>
+                           )}
+                           {hasFollowers && hasFollowing && <span>·</span>}
+                           {hasFollowing && (
+                             <span>
+                               <strong className="text-[#1f2328]">{member.following}</strong> following
+                             </span>
+                           )}
+                      </div>
+                    )}
                     
-                     <div className="mt-4 flex flex-col gap-2 text-sm text-[#1f2328]">
-                         <div className="flex items-center gap-2">
-                             <MapPin size={16} className="text-[#656d76]" />
-                             <span>San Francisco, CA</span>
-                         </div>
+                    <div className="mt-4 flex flex-col gap-2 text-sm text-[#1f2328]">
+                        {member.location && (
+                          <div className="flex items-center gap-2">
+                              <MapPin size={16} className="text-[#656d76] shrink-0" />
+                              <span>{member.location}</span>
+                          </div>
+                        )}
+
+                        {member.batch && (
+                          <div className="flex items-center gap-2">
+                              <GraduationCap size={16} className="text-[#656d76] shrink-0" />
+                              <span>{member.batch}</span>
+                          </div>
+                        )}
+
+                        {member.github_url && (
+                          <div className="flex items-center gap-2">
+                              <ExternalLink size={16} className="text-[#656d76] shrink-0" />
+                              <a
+                                href={member.github_url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-[#0969da] hover:underline truncate"
+                              >
+                                {member.github_url.replace(/^https?:\/\/(www\.)?github\.com\//i, '@')}
+                              </a>
+                          </div>
+                        )}
+
+                        {member.website && (
+                          <div className="flex items-center gap-2">
+                              <Globe size={16} className="text-[#656d76] shrink-0" />
+                              <a
+                                href={member.website}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-[#0969da] hover:underline truncate"
+                              >
+                                {member.website.replace(/^https?:\/\//i, '')}
+                              </a>
+                          </div>
+                        )}
                     </div>
                 </div>
                 
