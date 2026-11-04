@@ -14,12 +14,14 @@ export type Project = {
 };
 
 export type Member = {
+type Member = {
   name: string;
   username: string;
   bio: string;
   avatar_url: string;
   skills: string[];
   projects: Project[];
+  projects: unknown[];
   location?: string;
   batch?: string;
   github_url?: string;
@@ -29,6 +31,7 @@ export type Member = {
 };
 
 export async function readMembers(): Promise<Member[]> {
+async function readMembers(): Promise<Member[]> {
   const contents = await fs.readFile(membersFile, "utf-8");
   return JSON.parse(contents) as Member[];
 }
@@ -59,6 +62,7 @@ router.get("/:username", async (req, res) => {
 
     if (!member) {
       res.status(404).json({ error: `Member '@${username}' not found` });
+      res.status(404).json({ error: `Member '${username}' not found` });
       return;
     }
 

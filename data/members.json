@@ -4,6 +4,11 @@
     "username": "sarahcode",
     "bio": "Full-stack developer who loves React and efficient algorithms. Building tools for developers.",
     "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
+    "location": "Bengaluru, India",
+    "batch": "VVCE CSE '25",
+    "github_url": "https://github.com/sarahcode",
+    "followers": 34,
+    "following": 12,
     "skills": ["React", "Node.js", "TypeScript", "AWS"],
     "projects": [
       {
@@ -25,6 +30,11 @@
     "username": "arodriguez",
     "bio": "UI/UX enthusiast and frontend wizard. Obsessed with pixel perfection.",
     "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
+    "location": "Mysuru, India",
+    "batch": "VVCE ISE '26",
+    "github_url": "https://github.com/arodriguez",
+    "followers": 18,
+    "following": 9,
     "skills": ["Vue.js", "Tailwind", "Figma", "Three.js"],
     "projects": [
       {
@@ -46,6 +56,11 @@
     "username": "jordan_dev",
     "bio": "Backend engineer focused on distributed systems and cloud architecture.",
     "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan",
+    "location": "Mysuru, India",
+    "batch": "VVCE ECE '25",
+    "github_url": "https://github.com/jordan_dev",
+    "followers": 27,
+    "following": 14,
     "skills": ["Java", "Spring Boot", "Kafka", "Kubernetes"],
     "projects": [
       {
@@ -61,6 +76,11 @@
     "username": "emilyw",
     "bio": "Data scientist turned developer. Python lover.",
     "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
+    "location": "Bengaluru, India",
+    "batch": "VVCE AIML '26",
+    "github_url": "https://github.com/emilyw",
+    "followers": 42,
+    "following": 15,
     "skills": ["Python", "Django", "Pandas", "PostgreSQL"],
     "projects": [
       {
@@ -82,6 +102,11 @@
     "username": "dkim_security",
     "bio": "Cybersecurity student. CTF player. Securing the web one commit at a time.",
     "avatar_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=David",
+    "location": "Mysuru, India",
+    "batch": "VVCE Cyber Security '25",
+    "github_url": "https://github.com/dkim_security",
+    "followers": 19,
+    "following": 7,
     "skills": ["C++", "Python", "Bash", "Assembly"],
     "projects": [
       {

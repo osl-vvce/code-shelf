@@ -2,6 +2,37 @@ import { Router } from "express";
 import { readMembers, writeMembers, type Project } from "./members.js";
 
 const router = Router();
+import { promises as fs } from "node:fs";
+import path from "node:path";
+
+const router = Router();
+const membersFile = path.join(process.cwd(), "data", "members.json");
+
+type Project = {
+  title: string;
+  description: string;
+  techStack: string[];
+  link: string;
+  liveDemo?: string;
+};
+
+type Member = {
+  name: string;
+  username: string;
+  bio: string;
+  avatar_url: string;
+  skills: string[];
+  projects: Project[];
+};
+
+async function readMembers(): Promise<Member[]> {
+  const contents = await fs.readFile(membersFile, "utf-8");
+  return JSON.parse(contents) as Member[];
+}
+
+async function writeMembers(members: Member[]): Promise<void> {
+  await fs.writeFile(membersFile, `${JSON.stringify(members, null, 2)}\n`, "utf-8");
+}
 
 function isHttpUrl(value: string): boolean {
   try {
@@ -16,6 +47,10 @@ function isHttpUrl(value: string): boolean {
 router.get("/", async (req, res) => {
   try {
     const { tech, search, username } = req.query;
+// GET /api/projects - Get all projects with optional ?tech= and ?username= filtering
+router.get("/", async (req, res) => {
+  try {
+    const { tech, username } = req.query;
     const members = await readMembers();
 
     let allProjects = members.flatMap((m) =>
@@ -33,6 +68,8 @@ router.get("/", async (req, res) => {
       const searchUsername = username.trim().toLowerCase();
       allProjects = allProjects.filter(
         (p) => p.author.username.toLowerCase() === searchUsername
+      allProjects = allProjects.filter(
+        (p) => p.author.username.toLowerCase() === username.trim().toLowerCase()
       );
     }
 
@@ -73,6 +110,7 @@ router.post("/", async (req, res) => {
       liveDemo,
       techStack: rawTechStack,
     } = req.body || {};
+    const { username, title, description, link, liveDemo, techStack: rawTechStack } = req.body || {};
 
     const cleanUsername = typeof username === "string" ? username.trim() : "";
     const cleanTitle = typeof title === "string" ? title.trim() : "";
@@ -89,6 +127,7 @@ router.post("/", async (req, res) => {
         .map((t) => t.trim())
         .filter(Boolean);
     }
+
     techStack = [...new Set(techStack)];
 
     if (!cleanUsername || !cleanTitle || !cleanDescription || !cleanLink || techStack.length === 0) {

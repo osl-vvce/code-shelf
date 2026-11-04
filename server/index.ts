@@ -32,6 +32,7 @@ app.get("/api/health", (_req, res) => {
 });
 
 // Modular route handlers
+// Modular routes
 app.use("/api/members", membersRouter);
 app.use("/api/projects", projectsRouter);
 
