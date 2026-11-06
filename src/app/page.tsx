@@ -1,7 +1,7 @@
 
 import { promises as fs } from 'fs';
 import path from 'path';
-import MemberCard from '@/components/MemberCard';
+import MemberDirectory from '@/components/MemberDirectory';
 import { Users } from 'lucide-react';
 
 interface Member {
@@ -51,29 +51,7 @@ export default async function Home() {
                 </p>
             </div>
 
-            {members.length > 0 ? (
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6">
-                    {members.map((member) => (
-                        <MemberCard
-                            key={member.username}
-                            member={member}
-                        />
-                    ))}
-                </div>
-            ) : (
-                <div className="rounded-xl border border-dashed border-[#d0d7de] bg-white px-6 py-12 text-center">
-                    <Users
-                        size={28}
-                        className="mx-auto mb-3 text-[#8c959f]"
-                    />
-                    <h2 className="text-base font-semibold text-[#1f2328]">
-                        No members yet
-                    </h2>
-                    <p className="mt-1 text-sm text-[#656d76]">
-                        Members will appear here when they are added to Code-Shelf.
-                    </p>
-                </div>
-            )}
+            <MemberDirectory members={members} />
         </main>
     );
 }
